@@ -1,0 +1,38 @@
+
+class Solution {
+    public String reverseVowels(String s) {
+        char[] ch = s.toCharArray();
+        String rev = "";
+
+        // Looping from the end to the start
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (isLower(ch[i]) || isUpper(ch[i])) {
+                rev += ch[i]; // Add vowels in reverse order
+            }
+        }
+
+        String result = "";
+        int revIndex = 0;
+
+        // Loop through the original string to place reversed vowels
+        for (int i = 0; i < s.length(); i++) {
+            if (isLower(ch[i]) || isUpper(ch[i])) {
+                result += rev.charAt(revIndex++); // Add reversed vowel
+            } else {
+                result += ch[i]; // Add non-vowel characters as is
+            }
+        }
+
+        return result;
+    }
+
+    // Checking for lowercase vowels
+    public static boolean isLower(char ch) {
+        return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
+    }
+
+    // Checking for uppercase vowels
+    public static boolean isUpper(char ch) {
+        return ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U';
+    }
+}
