@@ -1,0 +1,23 @@
+class Solution {
+    public String removeStars(String s) {
+        
+        char []ch = s.toCharArray();
+
+        StringBuilder stack = new StringBuilder();
+
+        for(char c : ch)
+        {
+            if(c == '*')
+            {
+                if(stack.length() > 0)
+                {
+                    stack.deleteCharAt(stack.length()- 1);//Remove the character to the stack
+                }
+            }else{
+                stack.append(c);//Add the character to the stack
+            }
+        }
+// Convert StringBuilder to a string and return the result
+        return stack.toString();
+    }
+}
